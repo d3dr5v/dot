@@ -1,0 +1,7 @@
+[user]
+	name = David Roussov
+	email = david.roussov@protonmail.com
+[init]
+	defaultBranch = master
+[push]
+  default = current
