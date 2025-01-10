@@ -2,7 +2,7 @@ import = [
   "~/.config/alacritty/themes/themes/github_dark.toml"
 ]
 
-shell = "/bin/zsh"
+shell = "/bin/bash"
 
 [colors.primary]
 background = '#000000'

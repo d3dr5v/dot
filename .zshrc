@@ -1,7 +1,8 @@
-echo "ZSH"
 export ZSH="$HOME/.oh-my-zsh"
 
 export PATH="$PATH:/nix/var/nix/profiles/default/bin"
+export PATH="/opt/homebrew/bin:$PATH"
+
 
 ZSH_DISABLE_COMPFIX="true"
 ZSH_THEME="robbyrussell"
@@ -20,6 +21,17 @@ setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
 setopt INC_APPEND_HISTORY
 
-if [ "$NIX_SHELL" != true ] ; then
-	nix-shell --run zsh /Users/.david/nix/default.nix
-fi
+alias vi="nvim"
+alias v="vim"
+alias vim="nvim"
+
+
+function define() {
+  ~/chatgpt "Define $1"
+}
+
+function c() {
+    awk "BEGIN { print $1 }"
+}
+
+eval "$(zoxide init zsh)"

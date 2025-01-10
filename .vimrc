@@ -22,7 +22,6 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'hashivim/vim-terraform'
-Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 call plug#end()
 
 autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
@@ -33,12 +32,15 @@ nnoremap K <nop>
 let g:netrw_localrmdir="rm -rf"
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|class\|build\|dist\|target\|debug'
 
-hi! link VertSplit Ignore
-hi! link EndOfBuffer Ignore
-set fillchars+=eob:\ " The trailing space is important
-
 command! -bar -bang Q quit!
 cabbrev q quit!
 
-let g:sierra_Pitch = 1
-colorscheme sierra
+" let g:sierra_Pitch = 1
+" colorscheme sierra
+
+let g:afterglow_inherit_background=1
+colorscheme afterglow
+
+hi! link VertSplit Ignore
+hi! link EndOfBuffer Ignore
+set fillchars+=eob:\ " The trailing space is important
