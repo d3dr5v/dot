@@ -35,12 +35,8 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|class\|build\|dist\|ta
 command! -bar -bang Q quit!
 cabbrev q quit!
 
-" let g:sierra_Pitch = 1
-" colorscheme sierra
-
-let g:afterglow_inherit_background=1
-colorscheme afterglow
-
 hi! link VertSplit Ignore
 hi! link EndOfBuffer Ignore
 set fillchars+=eob:\ " The trailing space is important
+
+colorscheme green

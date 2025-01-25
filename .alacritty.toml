@@ -1,11 +1,15 @@
-import = [
-  "~/.config/alacritty/themes/themes/github_dark.toml"
-]
-
 shell = "/bin/bash"
 
 [colors.primary]
 background = '#000000'
+#foreground = '#FFEB99' # yellow
+foreground = '#77DD77' # green
+#foreground = '#99CCFF' # blue
+#foreground = '#CBA6E3' # purple
+#foreground = '#FF9999' # red
+#foreground = '#D2B48C' # brown
+#foreground = '#FFCC99' # orange
+
 
 [font]
 size = 16.0
