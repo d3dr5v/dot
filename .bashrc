@@ -5,8 +5,11 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 if [[ $- == *i* ]]; then
     echo "Interactive shell"
 
-    /nix/var/nix/profiles/default/bin/nix-shell --run zsh /Users/david/@/nix/default.nix
+    if env | grep -q "NIX"; then
+        echo "You are in a Nix shell."
+    else
+        echo "You are not in a Nix shell."
+        /nix/var/nix/profiles/default/bin/nix develop /Users/david/@/nix
+    fi
 fi
 
-
-. "$HOME/.cargo/env"
