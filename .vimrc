@@ -39,4 +39,30 @@ hi! link VertSplit Ignore
 hi! link EndOfBuffer Ignore
 set fillchars+=eob:\ " The trailing space is important
 
-colorscheme green
+
+
+
+
+
+if exists('$TMUX')
+    let session_name = system("tmux display-message -p '#S'")
+    let session_name = substitute(session_name, '\n', '', 'g')
+
+    if session_name == 'r'
+        colorscheme red
+    elseif session_name == 'g'
+        colorscheme green
+    elseif session_name == 'b'
+        colorscheme blue
+    elseif session_name == 'y'
+        colorscheme yellow
+    elseif session_name == 'p'
+        colorscheme purple
+    else
+        let g:afterglow_inherit_background=1
+        colorscheme afterglow
+    endif
+else
+  let g:afterglow_inherit_background=1
+  colorscheme afterglow
+endif
