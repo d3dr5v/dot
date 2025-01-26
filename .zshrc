@@ -22,7 +22,9 @@ alias vi="nvim"
 alias v="vim"
 alias vim="nvim"
 alias @="cd ~/@/"
-alias ls="ls --color"
+
+eval "$(zoxide init zsh)"
+eval "$(direnv hook zsh)"
 
 function llm() {
    if [ $# -ne 1 ]; then
@@ -59,8 +61,51 @@ function cheat() {
   llm "$prefixed_string"
 }
 
+function recommend() {
+  local prefix="Your task is to recommend content similar to how youtube will recommend content in the sidebar. Your recommendations may be loosely or tightly connected to the current content. Do not provide introduction or conclusions. For the recommended content, only provide title without description in a list format. The current content is: "
+  local input_string="$1"
+  local prefixed_string="$prefix$input_string"
+
+  llm "$prefixed_string"
+}
+
 function llmi() {
   chatgpt-cli --multiline
+}
+
+function m() {
+  local m_history="/Users/david/@/log/m"
+
+  if ! grep -Fxq "$1" "$m_history"; then
+    echo $1 >> "$m_history"
+  fi
+
+  local count=${2:-3}
+  mpv $(yt-dlp "ytsearch${count}:$1" --get-url -f 140)
+}
+
+function mr() {
+  recommend $1 &
+  m $1 $2
+}
+
+function ms() {
+  local file="/Users/david/@/log/m"
+
+  local lines=()
+  while IFS= read -r line; do
+    lines+=("$line")
+  done < "$file"
+
+  local num_lines=${#lines[@]}
+
+  while true; do
+    local random_index=$((RANDOM % num_lines))
+    local random_line="${lines[random_index]}"
+
+    echo "search term: $random_line"
+    m $random_line $1
+  done
 }
 
 function c() {
@@ -72,6 +117,3 @@ function gacp() {
     git commit -a -m "$1"
     git push
 }
-
-eval "$(zoxide init zsh)"
-eval "$(direnv hook zsh)"
