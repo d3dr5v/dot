@@ -1,4 +1,5 @@
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+set runtimepath+=~/@/dot/.vim
 set shiftwidth=2
 set noswapfile
 set tabstop=2
