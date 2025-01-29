@@ -26,6 +26,13 @@ alias @="cd ~/@/"
 eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
 
+
+
+
+
+
+
+
 function llm() {
    if [ $# -ne 1 ]; then
        echo "Usage: llm <string>"
@@ -37,8 +44,36 @@ function llm() {
    echo "$input_string" | chatgpt-cli --non-interactive
 }
 
+function llmi() {
+  chatgpt-cli --multiline
+}
+
+
+
+
+
+# ╔═════════════════════════════════════════════════════════╗
+# ║                         K1                              ║
+# ╚═════════════════════════════════════════════════════════╝
+
 function define() {
   local prefix="Define: "
+  local input_string="$1"
+  local prefixed_string="$prefix$input_string"
+
+  llm "$prefixed_string"
+}
+
+function synonyms() {
+  local prefix="List synonyms for word: "
+  local input_string="$1"
+  local prefixed_string="$prefix$input_string"
+
+  llm "$prefixed_string"
+}
+
+function antonyms() {
+  local prefix="List antonyms for word: "
   local input_string="$1"
   local prefixed_string="$prefix$input_string"
 
@@ -69,9 +104,38 @@ function recommend() {
   llm "$prefixed_string"
 }
 
-function llmi() {
-  chatgpt-cli --multiline
+# ╔═════════════════════════════════════════════════════════╗
+# ║                         K2                              ║
+# ╚═════════════════════════════════════════════════════════╝
+
+function wiki() {
+  ~/@/sh/wiki.sh $1
 }
+
+
+# ╔═════════════════════════════════════════════════════════╗
+# ║                         K3                              ║
+# ╚═════════════════════════════════════════════════════════╝
+
+
+
+# ╔═════════════════════════════════════════════════════════╗
+# ║                         K4                              ║
+# ╚═════════════════════════════════════════════════════════╝
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function m() {
   local m_history="/Users/david/@/log/m"
@@ -117,3 +181,24 @@ function gacp() {
     git commit -a -m "$1"
     git push
 }
+
+
+
+
+
+SESSION_NAMES=("r" "g" "b" "p" "y")
+
+for SESSION in "${SESSION_NAMES[@]}"; do
+  if ! tmux has-session -t "$SESSION" 2>/dev/null; then
+    tmux new-session -d -s "$SESSION"
+  fi
+done
+
+
+
+
+
+
+
+
+
