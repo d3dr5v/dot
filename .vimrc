@@ -60,10 +60,8 @@ if exists('$TMUX')
     elseif session_name == 'p'
         colorscheme purple
     else
-        let g:afterglow_inherit_background=1
-        colorscheme afterglow
+        colorscheme white
     endif
 else
-  let g:afterglow_inherit_background=1
-  colorscheme afterglow
+  colorscheme white
 endif
