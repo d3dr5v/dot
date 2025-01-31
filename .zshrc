@@ -111,12 +111,17 @@ function wiki() {
   ~/@/sh/wiki.sh $1
 }
 
-
 # ╔═════════════════════════════════════════════════════════╗
 # ║                         K3                              ║
 # ╚═════════════════════════════════════════════════════════╝
 
+function doi() {
+  curl -s "https://api.crossref.org/works?query=$1&rows=20" | jq '.message.items[] | {title: .title[0], DOI: .DOI}'
+}
 
+function paper() {
+  ~/@/sh/paper.sh $1
+}
 
 # ╔═════════════════════════════════════════════════════════╗
 # ║                         K4                              ║
