@@ -9,7 +9,6 @@ if [[ $- == *i* ]]; then
         echo "You are in a Nix shell."
     else
         echo "You are not in a Nix shell."
-        /nix/var/nix/profiles/default/bin/nix develop ~/@/nix
     fi
 fi
 

@@ -1,5 +1,7 @@
 export ZSH="$HOME/.oh-my-zsh"
-export HISTFILE=/Users/david/@/log/history
+export PATH="/usr/bin:$PATH"
+export PATH="~/.venv/bin:$PATH"
+export HISTFILE=~/@/log/history
 export HISTSIZE=1000000
 export SAVEHIST=1000000
 
@@ -40,11 +42,11 @@ function llm() {
 
    local input_string="$1"
 
-   echo "$input_string" | chatgpt-cli --non-interactive
+   echo "$input_string" | ~/.venv/bin/chatgpt-cli --non-interactive
 }
 
 function llmi() {
-  chatgpt-cli --multiline
+  ~/.venv/bin/chatgpt-cli --multiline
 }
 
 
