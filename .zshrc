@@ -144,24 +144,24 @@ function paper() {
 
 
 
-function m() {
-  local m_history="/Users/david/@/log/m"
+function son() {
+  local son_history="$HOME/@/log/son"
 
-  if ! grep -Fxq "$1" "$m_history"; then
-    echo $1 >> "$m_history"
+  if ! grep -Fxq "$1" "$son_history"; then
+    echo $1 >> "$son_history"
   fi
 
   local count=${2:-3}
   mpv $(yt-dlp "ytsearch${count}:$1" --get-url -f 140)
 }
 
-function mr() {
+function sonr() {
   recommend $1 &
-  m $1 $2
+  son $1 $2
 }
 
-function ms() {
-  local file="/Users/david/@/log/m"
+function sons() {
+  local file="$HOME/@/log/son"
 
   local lines=()
   while IFS= read -r line; do
@@ -175,7 +175,7 @@ function ms() {
     local random_line="${lines[random_index]}"
 
     echo "search term: $random_line"
-    m $random_line $1
+    son $random_line $1
   done
 }
 

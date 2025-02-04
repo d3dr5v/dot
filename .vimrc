@@ -28,7 +28,7 @@ autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 autocmd BufRead * normal! zR
 
 nnoremap K <nop>
-nnoremap <silent> <C-p> :Files<CR> " ctrl p file search
+nnoremap <silent> <C-p> :Files<CR>
 
 let g:netrw_localrmdir="rm -rf"
 
