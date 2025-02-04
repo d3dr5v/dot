@@ -1,0 +1,17 @@
+[colors.primary]
+background = '#000000'
+foreground = '#FF9999'
+
+[font]
+size = 16.0
+normal = { family = "Inconsolata", style = "Regular" }
+
+[window]
+decorations = "Buttonless"
+dynamic_padding = true
+startup_mode = "Fullscreen"
+level = "AlwaysOnTop"
+dimensions = { columns = 182, lines = 52 }
+
+[terminal]
+shell = "/bin/bash"

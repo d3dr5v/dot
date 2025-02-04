@@ -1,6 +1,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 export PATH="/usr/bin:$PATH"
 export PATH="~/.venv/bin:$PATH"
+export PATH="/usr/lib:$PATH"
 export HISTFILE=~/@/log/history
 export HISTSIZE=1000000
 export SAVEHIST=1000000

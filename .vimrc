@@ -1,4 +1,3 @@
-set runtimepath^=~/.vim/bundle/ctrlp.vim
 set runtimepath+=~/@/dot/.vim
 set shiftwidth=2
 set noswapfile
@@ -29,9 +28,9 @@ autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 autocmd BufRead * normal! zR
 
 nnoremap K <nop>
+nnoremap <silent> <C-p> :Files<CR> " ctrl p file search
 
 let g:netrw_localrmdir="rm -rf"
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|class\|build\|dist\|target\|debug'
 
 command! -bar -bang Q quit!
 cabbrev q quit!
@@ -65,3 +64,10 @@ if exists('$TMUX')
 else
   colorscheme white
 endif
+
+
+
+
+
+
+
