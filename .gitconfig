@@ -1,0 +1,9 @@
+[user]
+	name = David Roussov
+	email = david.roussov@gmail.com
+[init]
+	defaultBranch = master
+[push]
+  default = current
+[core]
+	excludesfile = /Users/david/.gitignore_global
