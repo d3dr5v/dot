@@ -2,7 +2,8 @@ export ZSH="$HOME/.oh-my-zsh"
 export PATH="/usr/bin:$PATH"
 export PATH="~/.venv/bin:$PATH"
 export PATH="/usr/lib:$PATH"
-export HISTFILE=~/@/log/history
+export NODE_PATH=/Users/david/.js/node_modules
+export HISTFILE=~/.@/dot/.zsh_history
 export HISTSIZE=1000000
 export SAVEHIST=1000000
 
@@ -144,49 +145,40 @@ function paper() {
 
 
 
-function son() {
-  local son_history="$HOME/@/log/son"
-
-  if ! grep -Fxq "$1" "$son_history"; then
-    echo $1 >> "$son_history"
-  fi
-
+function musik() {
   local count=${2:-3}
   mpv $(yt-dlp "ytsearch${count}:$1" --get-url -f 140)
 }
 
-function sonr() {
+function musikr() {
   recommend $1 &
-  son $1 $2
+  musik $1 $2
 }
 
-function sons() {
-  local file="$HOME/@/log/son"
 
-  local lines=()
-  while IFS= read -r line; do
-    lines+=("$line")
-  done < "$file"
 
-  local num_lines=${#lines[@]}
-
-  while true; do
-    local random_index=$((RANDOM % num_lines))
-    local random_line="${lines[random_index]}"
-
-    echo "search term: $random_line"
-    son $random_line $1
-  done
-}
 
 function c() {
     awk "BEGIN { print $1 }"
 }
 
-function gacp() {
+
+
+
+function sg() {
     git add .
     git commit -a -m "$1"
     git push
+}
+
+function ss() {
+  local prefix="david-roussov-public-"
+  local current_dir
+  current_dir=$(basename "$PWD")
+
+  local bucket_name="s3://${prefix}${current_dir}"
+
+  AWS_PROFILE=davidroussov aws s3 sync . "$bucket_name"
 }
 
 
