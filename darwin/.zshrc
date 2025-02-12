@@ -165,13 +165,13 @@ function c() {
 
 
 
-function sg() {
+function scg() {
     git add .
     git commit -a -m "$1"
     git push
 }
 
-function ss() {
+function scs() {
   local prefix="david-roussov-public-"
   local current_dir
   current_dir=$(basename "$PWD")
@@ -179,6 +179,18 @@ function ss() {
   local bucket_name="s3://${prefix}${current_dir}"
 
   AWS_PROFILE=davidroussov aws s3 sync . "$bucket_name"
+}
+
+
+
+
+function search() {
+  local search_term="$1"
+  curl \
+    -H "Authorization: Bot ${KAGI_API_KEY}" \
+    -H "Content-Type: application/json" \
+    --data "{\"query\": \"${search_term}\"}" \
+    https://kagi.com/api/v0/fastgpt
 }
 
 
