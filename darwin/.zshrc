@@ -171,8 +171,18 @@ function scg() {
     git push
 }
 
-function scs() {
+function sc-public() {
   local prefix="david-roussov-public-"
+  local current_dir
+  current_dir=$(basename "$PWD")
+
+  local bucket_name="s3://${prefix}${current_dir}"
+
+  AWS_PROFILE=davidroussov aws s3 sync . "$bucket_name"
+}
+
+function sc-private() {
+  local prefix="david-roussov-private-"
   local current_dir
   current_dir=$(basename "$PWD")
 
