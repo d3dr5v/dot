@@ -3,7 +3,7 @@ export PATH="/usr/bin:$PATH"
 export PATH="~/.venv/bin:$PATH"
 export PATH="/usr/lib:$PATH"
 export NODE_PATH=/Users/david/.js/node_modules
-export HISTFILE=~/.@/dot/.zsh_history
+export HISTFILE=~/.@/dot/giSEc/.zsh_history
 export HISTSIZE=1000000
 export SAVEHIST=1000000
 
@@ -105,6 +105,10 @@ function recommend() {
   local prefixed_string="$prefix$input_string"
 
   llm "$prefixed_string"
+}
+
+function word() {
+  llm "Make up a fake word. Only provide the word and nothing else"
 }
 
 # ╔═════════════════════════════════════════════════════════╗
@@ -215,11 +219,17 @@ for SESSION in "${SESSION_NAMES[@]}"; do
   fi
 done
 
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+
+export PATH="$PATH:/Users/david/.gem/ruby/3.3.0/bin"
+export PATH="/nix/store//zz1nlk2mswx825rgah04xw93dv29mya7-ruby-3.3.6/bin/:$PATH"
 
 
 
 
-
-
-
+if [ -e "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh" ]; then                                                                                                                 
+  . "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"                                                                                                                           
+fi 
 

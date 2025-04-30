@@ -5,7 +5,7 @@ background = '#000000'
 foreground = '#FF9999'
 
 [font]
-size = 16.0
+size = 15.0
 
 [window]
 decorations = "Buttonless"
