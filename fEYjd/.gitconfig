@@ -5,5 +5,3 @@
 	defaultBranch = master
 [push]
   default = current
-[core]
-	excludesfile = /Users/david/.gitignore_global

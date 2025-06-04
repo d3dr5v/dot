@@ -29,13 +29,6 @@ alias @="cd ~/@/"
 eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
 
-
-
-
-
-
-
-
 function llm() {
    if [ $# -ne 1 ]; then
        echo "Usage: llm <string>"
@@ -50,10 +43,6 @@ function llm() {
 function llmi() {
   ~/.venv/bin/chatgpt-cli --multiline
 }
-
-
-
-
 
 # ╔═════════════════════════════════════════════════════════╗
 # ║                         K1                              ║
@@ -135,20 +124,6 @@ function paper() {
 # ║                         K4                              ║
 # ╚═════════════════════════════════════════════════════════╝
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function musik() {
   local count=${2:-3}
   mpv $(yt-dlp "ytsearch${count}:$1" --get-url -f 140)
@@ -159,15 +134,9 @@ function musikr() {
   musik $1 $2
 }
 
-
-
-
 function c() {
     awk "BEGIN { print $1 }"
 }
-
-
-
 
 function scg() {
     git add .
@@ -195,9 +164,6 @@ function sc-private() {
   AWS_PROFILE=davidroussov aws s3 sync . "$bucket_name"
 }
 
-
-
-
 function search() {
   local search_term="$1"
   curl \
@@ -207,10 +173,6 @@ function search() {
     https://kagi.com/api/v0/fastgpt
 }
 
-
-
-
-
 SESSION_NAMES=("r" "g" "b" "p" "y")
 
 for SESSION in "${SESSION_NAMES[@]}"; do
@@ -218,16 +180,6 @@ for SESSION in "${SESSION_NAMES[@]}"; do
     tmux new-session -d -s "$SESSION"
   fi
 done
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
-
-export PATH="$PATH:/Users/david/.gem/ruby/3.3.0/bin"
-export PATH="/nix/store//zz1nlk2mswx825rgah04xw93dv29mya7-ruby-3.3.6/bin/:$PATH"
-
-
-
 
 if [ -e "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh" ]; then                                                                                                                 
   . "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"                                                                                                                           
