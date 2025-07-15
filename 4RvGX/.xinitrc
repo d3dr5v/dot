@@ -10,4 +10,4 @@ alacritty &
 
 wmctrl -r "Alacritty" -b add,maximized_vert,maximized_horz
 
-wait
+exec i3
