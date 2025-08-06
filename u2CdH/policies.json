@@ -1,0 +1,9 @@
+{
+  "policies": {
+    "DisableTelemetry": true,
+    "Homepage": {
+      "URL": "https://news.ycombinator.com",
+      "Locked": false
+    }
+  }
+}
