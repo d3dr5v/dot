@@ -27,13 +27,6 @@ alias @="cd ~/@/"
 eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
 
-
-
-
-
-
-
-
 function llm() {
    if [ $# -ne 1 ]; then
        echo "Usage: llm <string>"
@@ -48,10 +41,6 @@ function llm() {
 function llmi() {
   ~/.venv/bin/chatgpt-cli --multiline
 }
-
-
-
-
 
 # ╔═════════════════════════════════════════════════════════╗
 # ║                         K1                              ║
@@ -97,14 +86,6 @@ function cheat() {
   llm "$prefixed_string"
 }
 
-function recommend() {
-  local prefix="Your task is to recommend content similar to how youtube will recommend content in the sidebar. Your recommendations may be loosely or tightly connected to the current content. Do not provide introduction or conclusions. For the recommended content, only provide title without description in a list format. The current content is: "
-  local input_string="$1"
-  local prefixed_string="$prefix$input_string"
-
-  llm "$prefixed_string"
-}
-
 function word() {
   llm "Make up a fake word. Only provide the word and nothing else"
 }
@@ -143,29 +124,14 @@ function paper() {
 
 
 
-
-
-
-
 function musik() {
   local count=${2:-3}
   mpv $(yt-dlp "ytsearch${count}:$1" --get-url -f 140)
 }
 
-function musikr() {
-  recommend $1 &
-  musik $1 $2
-}
-
-
-
-
 function c() {
     awk "BEGIN { print $1 }"
 }
-
-
-
 
 function scg() {
     git add .
@@ -181,10 +147,6 @@ function search() {
     --data "{\"query\": \"${search_term}\"}" \
     https://kagi.com/api/v0/fastgpt
 }
-
-
-
-
 
 SESSION_NAMES=("r" "g" "b" "p" "y")
 
