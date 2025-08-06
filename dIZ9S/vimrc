@@ -1,4 +1,3 @@
-"set runtimepath+=~/@/dot/.vim
 set shiftwidth=2
 set noswapfile
 set tabstop=2
@@ -31,6 +30,7 @@ autocmd BufRead * normal! zR
 nnoremap K <nop>
 nnoremap <silent> <C-p> :Files<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap j gj
 
 let g:netrw_localrmdir="rm -rf"
 let NERDTreeShowHidden=1

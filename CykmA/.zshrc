@@ -2,8 +2,6 @@ export ZSH="$HOME/.oh-my-zsh"
 export PATH="/usr/bin:$PATH"
 export PATH="~/.venv/bin:$PATH"
 export PATH="/usr/lib:$PATH"
-export NODE_PATH=/Users/david/.js/node_modules
-export HISTFILE=~/.@/dot/hu3g0/.zsh_history
 export HISTSIZE=1000000
 export SAVEHIST=1000000
 
@@ -175,29 +173,6 @@ function scg() {
     git push
 }
 
-function sc-public() {
-  local prefix="david-roussov-public-"
-  local current_dir
-  current_dir=$(basename "$PWD")
-
-  local bucket_name="s3://${prefix}${current_dir}"
-
-  AWS_PROFILE=davidroussov aws s3 sync . "$bucket_name"
-}
-
-function sc-private() {
-  local prefix="david-roussov-private-"
-  local current_dir
-  current_dir=$(basename "$PWD")
-
-  local bucket_name="s3://${prefix}${current_dir}"
-
-  AWS_PROFILE=davidroussov aws s3 sync . "$bucket_name"
-}
-
-
-
-
 function search() {
   local search_term="$1"
   curl \
@@ -218,18 +193,3 @@ for SESSION in "${SESSION_NAMES[@]}"; do
     tmux new-session -d -s "$SESSION"
   fi
 done
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
-
-export PATH="$PATH:/Users/david/.gem/ruby/3.3.0/bin"
-export PATH="/nix/store//zz1nlk2mswx825rgah04xw93dv29mya7-ruby-3.3.6/bin/:$PATH"
-
-
-
-
-if [ -e "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh" ]; then                                                                                                                 
-  . "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"                                                                                                                           
-fi 
-

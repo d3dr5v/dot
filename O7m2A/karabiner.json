@@ -37,7 +37,7 @@
                                         "modifiers": ["shift"]
                                     },
                                     {
-                                        "shell_command": "/Users/david/@/sh/colour.sh"
+                                        "shell_command": "~/@/sh/lKmke/colour.sh"
                                     }
                                 ],
                                 "type": "basic"
