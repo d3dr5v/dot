@@ -155,3 +155,6 @@ for SESSION in "${SESSION_NAMES[@]}"; do
     tmux new-session -d -s "$SESSION"
   fi
 done
+
+alias copy="pbcopy"
+alias paste="pbpaste"

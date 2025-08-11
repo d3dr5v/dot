@@ -1,9 +1,34 @@
 {
   "policies": {
+    "DisableAppUpdate": true,
+    "AppAutoUpdate": false,
     "DisableTelemetry": true,
+    "Browser": {
+      "recommendations": false
+    },
     "Homepage": {
       "URL": "https://news.ycombinator.com",
       "Locked": false
-    }
+    },
+    "UserMessaging": {
+      "ExtensionRecommendations": false,
+      "FeatureRecommendations": false,
+      "UrlbarInterventions": false,
+      "SkipOnboarding": true,
+      "MoreFromMozilla": false,
+      "FirefoxLabs": false,
+      "Locked": true
+    },
+    "AutofillCreditCardEnabled": false,
+    "DontCheckDefaultBrowser": true,
+    "FirefoxSuggest": {
+      "WebSuggestions": false,
+      "SponsoredSuggestions": false,
+      "ImproveSuggest": false,
+      "Locked": true
+    },
+    "SearchSuggestEnabled": false,
+    "TranslateEnabled": false,
+    "NewTabPage": false
   }
 }
