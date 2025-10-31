@@ -19,6 +19,8 @@ setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
 setopt INC_APPEND_HISTORY
 
+alias copy='xclip -selection clipboard'
+alias paste='xclip -selection clipboard -o'
 alias vi="nvim"
 alias v="nvim"
 alias vim="nvim"
@@ -155,26 +157,3 @@ for SESSION in "${SESSION_NAMES[@]}"; do
     tmux new-session -d -s "$SESSION"
   fi
 done
-
-<<<<<<< Updated upstream
-alias copy="pbcopy"
-alias paste="pbpaste"
-=======
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
-
-export PATH="$PATH:/Users/david/.gem/ruby/3.3.0/bin"
-export PATH="/nix/store//zz1nlk2mswx825rgah04xw93dv29mya7-ruby-3.3.6/bin/:$PATH"
-
-
-
-
-if [ -e "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh" ]; then                                                                                                                 
-  . "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"                                                                                                                           
-fi 
-
-
-alias copy='xclip -selection clipboard'
-alias paste='xclip -selection clipboard -o'
->>>>>>> Stashed changes

@@ -12,6 +12,7 @@ set mouse=a
 set laststatus=0
 set linebreak
 set shortmess+=I
+set relativenumber
 
 call plug#begin()
 Plug 'leafgarland/typescript-vim'
