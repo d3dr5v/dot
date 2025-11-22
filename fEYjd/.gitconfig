@@ -4,4 +4,4 @@
 [init]
 	defaultBranch = master
 [push]
-  default = current
+	default = upstream
