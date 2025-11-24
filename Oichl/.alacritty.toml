@@ -1,6 +1,6 @@
 [colors.primary]
 background = '#000000'
-foreground = '#FFEB99'
+foreground = '#99CCFF'
 
 [font]
 size = 15.0
