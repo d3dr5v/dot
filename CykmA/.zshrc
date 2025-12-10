@@ -23,24 +23,10 @@ alias vi="nvim"
 alias v="nvim"
 alias vim="nvim"
 alias @="cd ~/@/"
+alias llm="~/.venv/bin/llm"
 
 eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
-
-function llm() {
-   if [ $# -ne 1 ]; then
-       echo "Usage: llm <string>"
-       return 1
-   fi
-
-   local input_string="$1"
-
-   echo "$input_string" | ~/.venv/bin/chatgpt-cli --non-interactive
-}
-
-function llmi() {
-  ~/.venv/bin/chatgpt-cli --multiline
-}
 
 # ╔═════════════════════════════════════════════════════════╗
 # ║                         K1                              ║
@@ -68,26 +54,6 @@ function antonyms() {
   local prefixed_string="$prefix$input_string"
 
   llm "$prefixed_string"
-}
-
-function explain() {
-  local prefix="Explain: "
-  local input_string="$1"
-  local prefixed_string="$prefix$input_string"
-
-  llm "$prefixed_string"
-}
-
-function cheat() {
-  local prefix="For the following request (1) do not provide introductions, conclusions, disclaimers or warnings (2) minimize comments (3) be as information dense as possible. Provide a cheatsheet / API summary for: "
-  local input_string="$1"
-  local prefixed_string="$prefix$input_string"
-
-  llm "$prefixed_string"
-}
-
-function word() {
-  llm "Make up a fake word. Only provide the word and nothing else"
 }
 
 # ╔═════════════════════════════════════════════════════════╗
