@@ -25,6 +25,7 @@ alias vim="nvim"
 alias @="cd ~/@/"
 alias copy="pbcopy"
 alias paste="pbpaste"
+alias firefox="/Applications/Firefox.app/Contents/MacOS/firefox"
 
 eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
@@ -44,20 +45,20 @@ function sgit() {
 }
 
 function saws() {
-  ~/@/sh/HmRI0/sync.sh
+  $HOME/@/sh/HmRI0/sync.sh
 }
 
 function c() {
   reset && echo -en "\e[3J"
 }
 
-function search() {
+function kagi() {
   local search_term="$1"
   curl \
     -H "Authorization: Bot ${KAGI_API_KEY}" \
     -H "Content-Type: application/json" \
     --data "{\"query\": \"${search_term}\"}" \
-    https://kagi.com/api/v0/fastgpt
+    https://kagi.com/api/v0/fastgpt | jq '.'
 }
 
 function search-nix() {
@@ -95,5 +96,5 @@ function musik() {
 }
 
 function calc() {
-    awk "BEGIN { print $1 }"
+  awk "BEGIN { print $1 }"
 }
