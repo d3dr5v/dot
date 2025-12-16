@@ -1,11 +1,11 @@
 *
 !.gitignore
 !CykmA/
-!CykmA/.zshrc
+!CykmA/*
 !2ZbvL/
-!2ZbvL/.xbindkeysrc
+!2ZbvL/*
 !3FPMD/
-!3FPMD/nix.conf
+!3FPMD/*
 !4RvGX/
 !4RvGX/.xinitrc
 !8pX8V/

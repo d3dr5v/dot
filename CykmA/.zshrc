@@ -1,6 +1,6 @@
 export ZSH="$HOME/.oh-my-zsh"
 export PATH="/usr/bin:$PATH"
-export PATH="~/.venv/bin:$PATH"
+export PATH="$HOME/.venv/bin:$PATH"
 export PATH="/usr/lib:$PATH"
 export HISTSIZE=1000000
 export SAVEHIST=1000000
@@ -23,14 +23,47 @@ alias vi="nvim"
 alias v="nvim"
 alias vim="nvim"
 alias @="cd ~/@/"
-alias llm="~/.venv/bin/llm"
+alias copy="pbcopy"
+alias paste="pbpaste"
 
 eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
 
-# ╔═════════════════════════════════════════════════════════╗
-# ║                         K1                              ║
-# ╚═════════════════════════════════════════════════════════╝
+SESSION_NAMES=("r" "g" "b" "p" "y")
+
+for SESSION in "${SESSION_NAMES[@]}"; do
+  if ! tmux has-session -t "$SESSION" 2>/dev/null; then
+    tmux new-session -d -s "$SESSION"
+  fi
+done
+
+function sgit() {
+    git add .
+    git commit -a -m "$1"
+    git push
+}
+
+function saws() {
+  ~/@/sh/HmRI0/sync.sh
+}
+
+function c() {
+  reset && echo -en "\e[3J"
+}
+
+function search() {
+  local search_term="$1"
+  curl \
+    -H "Authorization: Bot ${KAGI_API_KEY}" \
+    -H "Content-Type: application/json" \
+    --data "{\"query\": \"${search_term}\"}" \
+    https://kagi.com/api/v0/fastgpt
+}
+
+function search-nix() {
+  local search_term="$1"
+  nix run github:peterldowns/nix-search-cli -- "${search_term}"
+}
 
 function define() {
   local prefix="Define: "
@@ -56,71 +89,11 @@ function antonyms() {
   llm "$prefixed_string"
 }
 
-# ╔═════════════════════════════════════════════════════════╗
-# ║                         K2                              ║
-# ╚═════════════════════════════════════════════════════════╝
-
-function wiki() {
-  ~/@/sh/wiki.sh $1
-}
-
-# ╔═════════════════════════════════════════════════════════╗
-# ║                         K3                              ║
-# ╚═════════════════════════════════════════════════════════╝
-
-function doi() {
-  curl -s "https://api.crossref.org/works?query=$1&rows=20" | jq '.message.items[] | {title: .title[0], DOI: .DOI}'
-}
-
-function paper() {
-  ~/@/sh/paper.sh $1
-}
-
-# ╔═════════════════════════════════════════════════════════╗
-# ║                         K4                              ║
-# ╚═════════════════════════════════════════════════════════╝
-
-
-
-
-
-
-
-
-
-
-
 function musik() {
   local count=${2:-3}
   mpv $(yt-dlp "ytsearch${count}:$1" --get-url -x)
 }
 
-function c() {
+function calc() {
     awk "BEGIN { print $1 }"
 }
-
-function scg() {
-    git add .
-    git commit -a -m "$1"
-    git push
-}
-
-function search() {
-  local search_term="$1"
-  curl \
-    -H "Authorization: Bot ${KAGI_API_KEY}" \
-    -H "Content-Type: application/json" \
-    --data "{\"query\": \"${search_term}\"}" \
-    https://kagi.com/api/v0/fastgpt
-}
-
-SESSION_NAMES=("r" "g" "b" "p" "y")
-
-for SESSION in "${SESSION_NAMES[@]}"; do
-  if ! tmux has-session -t "$SESSION" 2>/dev/null; then
-    tmux new-session -d -s "$SESSION"
-  fi
-done
-
-alias copy="pbcopy"
-alias paste="pbpaste"
