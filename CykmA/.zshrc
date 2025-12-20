@@ -30,7 +30,7 @@ alias firefox="/Applications/Firefox.app/Contents/MacOS/firefox"
 eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
 
-SESSION_NAMES=("r" "g" "b" "p" "y")
+SESSION_NAMES=("r" "g" "b" "p" "y" "o")
 
 for SESSION in "${SESSION_NAMES[@]}"; do
   if ! tmux has-session -t "$SESSION" 2>/dev/null; then

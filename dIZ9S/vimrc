@@ -59,6 +59,8 @@ if exists('$TMUX')
         colorscheme yellow
     elseif session_name == 'p'
         colorscheme purple
+    elseif session_name == 'o'
+        colorscheme orange
     else
         colorscheme white
     endif
