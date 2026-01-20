@@ -5,14 +5,21 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages '(evil rust-mode)))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+)
+
+(package-initialize)
+
+(setq evil-want-C-u-scroll t)
 
 (require 'evil)
 (evil-mode 1)
+
 (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
-(setq evil-want-C-u-scroll t)
+
+(setq make-backup-files nil)

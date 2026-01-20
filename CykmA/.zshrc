@@ -16,6 +16,8 @@ plugins+=(zsh-vi-mode)
 source $ZSH/oh-my-zsh.sh
 
 setopt HIST_IGNORE_DUPS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_SPACE
 setopt INC_APPEND_HISTORY
 
@@ -98,3 +100,27 @@ function musik() {
 function calc() {
   awk "BEGIN { print $1 }"
 }
+export PATH="$HOME/.local/bin:$PATH"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"

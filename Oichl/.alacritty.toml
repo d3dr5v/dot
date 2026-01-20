@@ -1,12 +1,12 @@
 [colors.primary]
 background = '#000000'
-foreground = '#FFA500'
+foreground = '#99CCFF'
 
 [font]
-size = 15.0
+size = 13.0
 
 [window]
-decorations = "Buttonless"
+decorations = "None"
 dynamic_padding = true
 startup_mode = "Fullscreen"
 
