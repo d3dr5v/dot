@@ -23,7 +23,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'hashivim/vim-terraform'
 Plug 'preservim/nerdtree'
-Plug 'OmniSharp/omnisharp-vim'
 call plug#end()
 
 autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
