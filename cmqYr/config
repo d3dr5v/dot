@@ -1,5 +1,6 @@
 Host github-rsa
   HostName github.com
+  User git
   IdentityFile ~/.ssh/id_rsa
   IdentitiesOnly yes
   AddKeysToAgent yes
@@ -11,4 +12,4 @@ Host github.com
   IdentityFile ~/.ssh/id_ed25519
   IdentitiesOnly yes
   AddKeysToAgent yes
-  UseKeyChain yes
+  UseKeychain yes

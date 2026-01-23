@@ -1,9 +1,9 @@
 [colors.primary]
 background = '#000000'
-foreground = '#99CCFF'
+foreground = '#FF9999'
 
 [font]
-size = 13.0
+size = 14.0
 
 [window]
 decorations = "None"
