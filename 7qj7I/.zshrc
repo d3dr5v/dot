@@ -16,6 +16,8 @@ plugins+=(zsh-vi-mode)
 source $ZSH/oh-my-zsh.sh
 
 setopt HIST_IGNORE_DUPS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_SPACE
 setopt INC_APPEND_HISTORY
 
@@ -29,24 +31,41 @@ alias @="cd ~/@/"
 eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
 
-function llm() {
-   if [ $# -ne 1 ]; then
-       echo "Usage: llm <string>"
-       return 1
-   fi
+SESSION_NAMES=("r" "g" "b" "p" "y")
 
-   local input_string="$1"
+for SESSION in "${SESSION_NAMES[@]}"; do
+  if ! tmux has-session -t "$SESSION" 2>/dev/null; then
+    tmux new-session -d -s "$SESSION"
+  fi
+done
 
-   echo "$input_string" | ~/.venv/bin/chatgpt-cli --non-interactive
+function sgit() {
+    git add .
+    git commit -a -m "$1"
+    git push
 }
 
-function llmi() {
-  ~/.venv/bin/chatgpt-cli --multiline
+function saws() {
+  $HOME/@/sh/HmRI0/sync.sh
 }
 
-# ╔═════════════════════════════════════════════════════════╗
-# ║                         K1                              ║
-# ╚═════════════════════════════════════════════════════════╝
+function c() {
+  reset && echo -en "\e[3J"
+}
+
+function kagi() {
+  local search_term="$1"
+  curl \
+    -H "Authorization: Bot ${KAGI_API_KEY}" \
+    -H "Content-Type: application/json" \
+    --data "{\"query\": \"${search_term}\"}" \
+    https://kagi.com/api/v0/fastgpt | jq '.'
+}
+
+function search-nix() {
+  local search_term="$1"
+  nix run github:peterldowns/nix-search-cli -- "${search_term}"
+}
 
 function define() {
   local prefix="Define: "
@@ -72,88 +91,11 @@ function antonyms() {
   llm "$prefixed_string"
 }
 
-function explain() {
-  local prefix="Explain: "
-  local input_string="$1"
-  local prefixed_string="$prefix$input_string"
-
-  llm "$prefixed_string"
-}
-
-function cheat() {
-  local prefix="For the following request (1) do not provide introductions, conclusions, disclaimers or warnings (2) minimize comments (3) be as information dense as possible. Provide a cheatsheet / API summary for: "
-  local input_string="$1"
-  local prefixed_string="$prefix$input_string"
-
-  llm "$prefixed_string"
-}
-
-function word() {
-  llm "Make up a fake word. Only provide the word and nothing else"
-}
-
-# ╔═════════════════════════════════════════════════════════╗
-# ║                         K2                              ║
-# ╚═════════════════════════════════════════════════════════╝
-
-function wiki() {
-  ~/@/sh/wiki.sh $1
-}
-
-# ╔═════════════════════════════════════════════════════════╗
-# ║                         K3                              ║
-# ╚═════════════════════════════════════════════════════════╝
-
-function doi() {
-  curl -s "https://api.crossref.org/works?query=$1&rows=20" | jq '.message.items[] | {title: .title[0], DOI: .DOI}'
-}
-
-function paper() {
-  ~/@/sh/paper.sh $1
-}
-
-# ╔═════════════════════════════════════════════════════════╗
-# ║                         K4                              ║
-# ╚═════════════════════════════════════════════════════════╝
-
-
-
-
-
-
-
-
-
-
-
 function musik() {
   local count=${2:-3}
   mpv $(yt-dlp "ytsearch${count}:$1" --get-url -f 140)
 }
 
-function c() {
-    awk "BEGIN { print $1 }"
+function calc() {
+  awk "BEGIN { print $1 }"
 }
-
-function scg() {
-    git add .
-    git commit -a -m "$1"
-    git push
-}
-
-function search() {
-  local search_term="$1"
-  curl \
-    -H "Authorization: Bot ${KAGI_API_KEY}" \
-    -H "Content-Type: application/json" \
-    --data "{\"query\": \"${search_term}\"}" \
-    https://kagi.com/api/v0/fastgpt
-}
-
-SESSION_NAMES=("r" "g" "b" "p" "y")
-
-for SESSION in "${SESSION_NAMES[@]}"; do
-  if ! tmux has-session -t "$SESSION" 2>/dev/null; then
-    tmux new-session -d -s "$SESSION"
-  fi
-done
