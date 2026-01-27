@@ -67,3 +67,6 @@ if exists('$TMUX')
 else
   colorscheme white
 endif
+
+" Xaml
+au BufNewFile,BufRead *.xaml        setf xml
