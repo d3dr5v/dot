@@ -70,3 +70,4 @@ endif
 
 " Xaml
 au BufNewFile,BufRead *.xaml        setf xml
+autocmd FileType cs setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab

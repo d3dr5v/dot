@@ -13,3 +13,11 @@ Host github.com
   IdentitiesOnly yes
   AddKeysToAgent yes
   UseKeychain yes
+
+Host bitbucket.org
+  HostName bitbucket.org
+  User git
+  IdentityFile ~/.ssh/id_rsa
+  IdentitiesOnly yes
+  AddKeysToAgent yes
+  UseKeychain yes
