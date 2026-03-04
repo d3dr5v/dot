@@ -6,10 +6,6 @@
     "Browser": {
       "recommendations": false
     },
-    "Homepage": {
-      "URL": "https://news.ycombinator.com",
-      "Locked": false
-    },
     "UserMessaging": {
       "ExtensionRecommendations": false,
       "FeatureRecommendations": false,
