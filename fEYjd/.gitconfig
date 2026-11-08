@@ -7,3 +7,5 @@
 	default = upstream
 [core]
 	excludesfile = /Users/dave/.gitignore_global
+[log]
+	date = local

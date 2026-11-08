@@ -4,14 +4,14 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(evil rust-mode)))
+ '(package-selected-packages '(evil magit rust-mode)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
-)
+ )
 
 (package-initialize)
 
@@ -19,6 +19,7 @@
 
 (require 'evil)
 (evil-mode 1)
+(add-hook 'rust-mode-hook #'hs-minor-mode)
 
 (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
 
