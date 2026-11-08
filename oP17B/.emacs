@@ -16,11 +16,14 @@
 (package-initialize)
 
 (setq evil-want-C-u-scroll t)
+(setq inhibit-startup-screen t)
 
 (require 'evil)
 (evil-mode 1)
 (add-hook 'rust-mode-hook #'hs-minor-mode)
 
 (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
+
+(menu-bar-mode -1)
 
 (setq make-backup-files nil)
