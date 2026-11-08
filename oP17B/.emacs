@@ -17,6 +17,8 @@
 
 (setq evil-want-C-u-scroll t)
 (setq inhibit-startup-screen t)
+(setq create-lockfiles nil)
+(setq auto-save-default nil)
 
 (require 'evil)
 (evil-mode 1)
